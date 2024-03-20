@@ -6,16 +6,26 @@
   width: 800px;
   padding: 20px;
   background-color: green;
+  gap: 20px;
 }
 
 .store > * {
   width: 100%;
 }
 
+.customerInfoSection {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.customerInfoSection > * {
+  width: 50%;
+}
+
 .formAddress {
   display: flex;
   flex-direction: column;
-  width: 40%;
 }
 
 .formAddress div {

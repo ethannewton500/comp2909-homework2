@@ -1,28 +1,37 @@
 <div class="store">
-  <form>
-    <div class="formAddress">
-      <div>
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" required>
+  <div class="customerInfoSection">
+    <form #customerInfo="ngForm">
+      <div class="formAddress">
+        <div>
+          <label for="firstName">First Name</label>
+          <input [(ngModel)]="firstName" pattern="^[a-zA-Z']+$" #first="ngModel"  type="text" id="firstName" name="firstName" required>
+        </div>
+        <div>
+          <label for="lastName">Last Name</label>
+          <input [(ngModel)]="lastName" pattern="^[a-zA-Z']+$" #last="ngModel"  type="text" id="lastName" name="lastName" required>
+        </div>
+        <div>
+          <label for="streetAddress">Street Address</label>
+          <input [(ngModel)]="streetAddress" #street="ngModel"  type="text" id="streetAddress" name="streetAddress" required>
+        </div>
+        <div>
+          <button [disabled]="!customerInfo.valid" type="submit" (click)="onCustomerInfoSubmit()">Submit Address</button>
+        </div>
       </div>
-      <div>
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" required>
-      </div>
-      <div>
-        <label for="streetAddress">Street Address</label>
-        <input type="text" id="streetAddress" name="streetAddress" required>
-      </div>
-      <div>
-        <button type="submit">Submit Address</button>
-      </div>
+    </form>
+    <div>
+      <p *ngIf="first?.errors?.['required']">First Name is required</p>
+      <p *ngIf="first?.errors?.['pattern']">First Name must contain only letters and apostrophes</p>
+      <p *ngIf="last?.errors?.['required']">Last Name is required</p>
+      <p *ngIf="last?.errors?.['pattern']">Last Name must contain only letters and apostrophes</p>
+      <p *ngIf="street?.errors?.['required']">Street Address is required</p>
     </div>
-  </form>
-  
-  <form (submit)="addItems(selectedProduct, quantity); $event.preventDefault()">
+  </div>
+
+  <form #orderItems="ngForm" (submit)="addItems(selectedProduct, quantity); $event.preventDefault()">
     <div class="formAddItems">
       <div>
-        <button type="submit">Add Selected Item</button>
+        <button [disabled]="!orderItems.valid" type="submit">Add Selected Item</button>
         <select [(ngModel)]="selectedProduct" name="selectedProduct">
           <option *ngFor="let product of products" [value]="product.item">{{ product.item }}</option>
         </select>
@@ -78,8 +87,8 @@
       </tbody>
     </table>
   </div>
-  <div>
-    <p>Order for Bob Jones at 92 Seymore Street</p>
+  <div [hidden]="!this.validCustomerInfo">
+    <p>Order for {{ firstName }} {{ lastName }} at {{ streetAddress }}</p>
   </div>
   
 </div>

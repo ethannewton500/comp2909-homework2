@@ -19,8 +19,14 @@ export class AppComponent {
     { item: 'pears', price: 4.99 },
   ];
 
-  selectedProduct: string = '';
-  quantity: number = 0;
+  validCustomerInfo = false;
+
+  firstName!: string;
+  lastName!: string;
+  streetAddress!: string;
+
+  selectedProduct!: string;
+  quantity!: number;
 
   subTotal: number = 0;
   taxRate: number = 0.07;
@@ -80,6 +86,9 @@ export class AppComponent {
     }
   }
 
+  showOrderInfo() {
+  }
+
   getDisplaySubTotal() {
     this.displaySubTotal = (Math.round(this.subTotal * 100) / 100).toFixed(2);
   }
@@ -91,5 +100,8 @@ export class AppComponent {
   getDisplayTotal() {
     this.displayTotal = (Math.round(this.total * 100) / 100).toFixed(2)
   }
-}
 
+  onCustomerInfoSubmit() {
+    this.validCustomerInfo = true;
+  }
+}
