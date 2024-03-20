@@ -1,0 +1,72 @@
+.store {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 800px;
+  padding: 20px;
+  background-color: green;
+}
+
+.store > * {
+  width: 100%;
+}
+
+.formAddress {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.formAddress div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.formAddress label {
+  display: flex;
+  width: 45%;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.formAddress input {
+  display: flex;
+  width: 55%;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.formAddress button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formAddItems {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border: 2px solid black;
+}
+
+.tableUnderline {
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+}
+
+th {
+  width: 20%;
+  border: 2px solid black;
+}
+
+tbody {
+  width: 20%;
+  border: 2px solid black, 0, 0, 0;
+}
